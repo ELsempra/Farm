@@ -11,7 +11,7 @@ class Cow extends Animal
 
     function __construct()
     {
-        $this->id++;
+        parent::__construct();
         $this->animalName = "Корова";
         $this->productName = "литров молока";
     }

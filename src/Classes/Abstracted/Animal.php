@@ -6,9 +6,15 @@ namespace Farm\Classes\Abstracted;
 
 use Farm\Interfaces\IProduce;
 
+//Прородитель всех животных
 abstract class Animal implements IProduce
 {
     protected $id, $productName, $products, $animalName;
+
+    public function __construct()
+    {
+        $this->id++;
+    }
 
     public function getAnimalName()
     {
@@ -20,7 +26,7 @@ abstract class Animal implements IProduce
         return $this->productName;
     }
 
-    public function getId()
+    public function getId():int
     {
         return $this->id;
     }
