@@ -11,8 +11,8 @@ use Farm\Classes\Chicken;
 $farm = new Farm();
 
 
-$farm->addAnimalToTable(new \Farm\Classes\Cow());
-$farm->addAnimalToTable(new \Farm\Classes\Chicken());
+$farm->addAnimalToTable(new Cow());
+$farm->addAnimalToTable(new Chicken());
 
 
 for ($i = 0; $i <= 7; $i++) {
