@@ -8,6 +8,7 @@ use Farm\Classes\Abstracted\Animal;
 
 class Farm
 {
+
     function __construct()
     {
         for ($i = 0; $i < 10; $i++) {
@@ -32,7 +33,7 @@ class Farm
     //Увеличиваем день недели тем самым пополняем нашу продукцию
     public function upDay()
     {
-        if ($this->dayOfWeek <= 7) {
+        if ($this->dayOfWeek < 7) {
             $this->dayOfWeek++;
             $this->addProducts();
 
@@ -42,15 +43,13 @@ class Farm
     }
 
     //В этом методе пополняем количество продуктов по фильтру названия животного
-    private function addProducts()
+    public function addProducts()
     {
-        foreach ($this->tableOfProducts as $key => $wrapper) {//Обертка над объектами
-            foreach ($wrapper as $animalName => $product) {//Название животного и продукт
-                foreach ($product as $productName => $sum) { //название продукта и кол-во
-                    foreach ($this->animals as $animal) {
-                        if ($animal->getAnimalName() == $animalName) {
-                            $this->tableOfProducts[$key][$animalName][$productName] += $animal->produceProducts();
-                        }
+        foreach ($this->animals as $animal) {///Проходимся по животным
+            foreach ($this->tableOfProducts as $key => $product) {//Проходимся по таблицу продуктов
+                foreach ($product as $productName => $sum) {
+                    if ($animal->getProductName() == $productName) {//Если имена совпадают, то добавляем в таблицу
+                        $this->tableOfProducts[$key][$productName] += $animal->produceProducts();
                     }
                 }
             }
@@ -62,10 +61,7 @@ class Farm
     {
         $this->tableOfProducts[] =
             [
-                $animal->getAnimalName() =>
-                    [
-                        $animal->getProductName() => 0
-                    ]
+                $animal->getProductName() => 0,
             ];
     }
 
@@ -73,12 +69,9 @@ class Farm
     //получаем количество продуктов добытое на ферме
     public function getSumProducts()
     {
-        foreach ($this->tableOfProducts as $animal) {
-            foreach ($animal as $animalName => $product) {
-                echo "$animalName добыла \t";
-                foreach ($product as $productName => $sum) {
-                    echo "$sum \t $productName ";
-                }
+        foreach ($this->tableOfProducts as $key => $product) { //название продукта
+            foreach ($product as $productName => $sum) {
+                echo $productName . "\t добыто:\t" . $sum . "<br>";
             }
         }
     }

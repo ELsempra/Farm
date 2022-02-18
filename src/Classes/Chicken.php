@@ -18,7 +18,7 @@ class Chicken extends Animal
 
     function produceProducts(): int
     {
-        return $this->products += random_int(0, 1);
+        return random_int(0, 1);
     }
 
 }

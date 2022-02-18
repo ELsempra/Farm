@@ -18,7 +18,7 @@ class Cow extends Animal
 
     function produceProducts(): int
     {
-        return $this->products += random_int(8, 12);;
+        return random_int(8, 12);;
     }
 
 }
