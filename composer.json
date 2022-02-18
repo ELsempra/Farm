@@ -1,0 +1,16 @@
+{
+    "name": "maxim/farm",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Farm\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Elsempra",
+            "email": "galkin029@gmail.com"
+        }
+    ],
+    "require": {}
+}
