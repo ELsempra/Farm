@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Farm\Classes;
 
-use Farm\Abstracted\Animal;
+use Farm\Classes\Abstracted\Animal;
 
 class Cow extends Animal
 {
@@ -16,8 +16,9 @@ class Cow extends Animal
         $this->productName = "литров молока";
     }
 
-    function produceProducts(){
-        $milk = random_int(8,12);
-        return $this->products += $milk;
+    function produceProducts(): int
+    {
+        return $this->products += random_int(8, 12);;
     }
+
 }

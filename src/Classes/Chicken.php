@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Farm\Classes;
 
-use Farm\Abstracted\Animal;
+use Farm\Classes\Abstracted\Animal;
 
 class Chicken extends Animal
 {
@@ -16,13 +16,9 @@ class Chicken extends Animal
         $this->productName = "штук яиц";
     }
 
-    function produceProducts(){
-        $eggs = random_int(0,1);
-        return $this->products +=$eggs;
+    function produceProducts(): int
+    {
+        return $this->products += random_int(0, 1);
     }
 
-    public function getSumProducts(Animal $animal){
-        echo "Курица снесла всего: " . array_sum($animal->products) . " яиц";
-        return array_sum($animal->products);
-    }
 }
